@@ -7,7 +7,7 @@ After writing your function uncomment the matching function reference at the bot
 // 1. Write a function called helloWorld that returns the string 'Hello World!'.
 
 function helloWorld() {
-return 'Hello World!'
+	return 'Hello World!'
 }
 
 /*
@@ -23,8 +23,19 @@ return 'Hello World!'
              lambdaSchool(8); // returns 8
 */
 
-function lambdaSchool() {
-
+function lambdaSchool(num) {
+	if (num%3 === 0 && num%5 !== 0) {
+		return 'Lambda';
+	}
+	else if (num%3 !== 0 && num%5 === 0) {
+		return 'School';
+	}
+	else if (num%3 === 0 && num%5 === 0) {
+		return 'Lambda School';
+	}
+	else {
+		return num;
+	}
 }
 
 /*
@@ -38,8 +49,16 @@ function lambdaSchool() {
              longestString(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
 */
 
-function longestString() {
-
+function longestString(strs) {
+	let maxLength = 0;
+	let tempLongestString = '';
+	strs.forEach(function(string) {
+		if (string.length > maxLength) {
+			tempLongestString = string;
+			maxLength = string.length;
+		}
+	})
+	return tempLongestString;
 }
 
 /*
@@ -63,8 +82,20 @@ function longestString() {
              computeUserAverageAge(users); // returns 62 (This number is rounded up from 61.6666)
 */
 
-function computeUserAverageAge() {
-
+function computeUserAverageAge(users) {
+	let sumOfAges = 0.;
+	let numberOfUsers = 0;
+	if (users.length === 0) {
+		console.log("The input array is empty");
+		return null;
+	}
+	else {
+		users.forEach(function(user) {
+			sumOfAges += user.age;
+			numberOfUsers += 1;
+		})
+		return Math.round(sumOfAges/numberOfUsers);
+	}
 }
 
 module.exports = {
